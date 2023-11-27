@@ -8,7 +8,7 @@ import "@testing-library/jest-dom";
 
 import {render} from '../../__tests__/utils';
 
-import Login_register from '../login_register';
+import Login_register from '../Login_register';
 
 
 describe("<Login_register />" , () => {
