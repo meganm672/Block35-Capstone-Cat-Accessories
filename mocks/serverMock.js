@@ -1,7 +1,6 @@
-import React from 'react'
+
 import { http, HttpResponse, delay } from 'msw'
-import { setupServer } from 'msw/node'
-import { fireEvent, screen } from '@testing-library/react'
+
 
 export const productsHandlers = [
     http.get('http://localhost:8080/api/products', async () => {
