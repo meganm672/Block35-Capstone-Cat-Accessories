@@ -10,7 +10,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, '../dist')))
+
 
 //token authentication
 app.use(verifyAuthToken)
@@ -45,10 +45,7 @@ app.use((error, req, res, next) => {
     });
 });
 
-// send the file if no route matches
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../dist/index.html'));
-});
+
   
 
 module.exports = app;

@@ -1,44 +1,50 @@
 
 import { Typography, Paper, Button, Grid, Card, CardMedia, CardContent, CardActions } from "@mui/material";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useGetUsersCartQuery, useUpdateUsersCartMutation, useDeleteCartItemsInCartMutation } from "../redux/api";
 import { useNavigate } from "react-router-dom";
 import CheckoutCartButton from "./CheckoutCartButton";
+import { useState } from "react";
+import GuestCartItem from "./GuestCartItem";
+import { viewCart } from "../redux/cartSlice";
 
 
 const Cart = () => {
   const { user } = useSelector(state => state.auth);
-  const { data: cart, isLoading, error } = useGetUsersCartQuery();
+  const guestCart = useSelector(state => state.cart.items)
+  const { data: loggedInCart, isLoading, error } = useGetUsersCartQuery();
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [deleteCartItemsInCart] = useDeleteCartItemsInCartMutation();
   const [updateUsersCart] = useUpdateUsersCartMutation();
 
+  const [type, setType] = useState("guest")
   const handleIncrement = (cartItem) => {
     const newQuantity = cartItem.quantity + 1;
-   updateUsersCart({cartItemId: cartItem.id, quantity: newQuantity});
+    updateUsersCart({ cartItemId: cartItem.id, quantity: newQuantity });
   };
 
-    const handleDecrement = (cartItem) => {
+  const handleDecrement = (cartItem) => {
     const newQuantity = cartItem.quantity - 1;
-   updateUsersCart({cartItemId: cartItem.id, quantity: newQuantity});
+    updateUsersCart({ cartItemId: cartItem.id, quantity: newQuantity });
   };
 
-  if (isLoading) {
+  if (user && isLoading) {
     return <Typography>Loading...</Typography>;
   }
-  if (error) {
-    return <Typography color="error">Error: You must be logged in to preform this action</Typography>;
+  if (user && error) {
+    return <Typography color="error">Error: {error.message}</Typography>;
   }
 
   return (
     <>
       <Paper elevation={6}>
-        <Typography variant="h3" sx={{ marginLeft: 14 }} >Welcome to {user.name}'s Cart</Typography>
+        <Typography variant="h3" sx={{ marginLeft: 14 }} >Welcome to {user ? `${user.name}'s` : "Your"} Cart</Typography>
         <Grid container spacing={4}>
-          {cart?.cartItems?.length // this is to make sure that checking for null along the way - cart? and cartItems?
+          {user && loggedInCart?.cartItems?.length // this is to make sure that checking for null along the way - cart? and cartItems?
             //any of these are undefined - then will display cart as empty
-            ? cart.cartItems.slice().sort((a,b)=> a.product.name>b.product.name? 1 : -1 ).map(cartItem => {
+            ? loggedInCart.cartItems.slice().sort((a, b) => a.product.name > b.product.name ? 1 : -1).map(cartItem => {
               return (
                 <Grid item key={cartItem.id} >
                   <Card sx={{ maxWidth: 350, minWidth: 350, maxHeight: 450, minHeight: 450 }} >
@@ -63,15 +69,31 @@ const Cart = () => {
                 </Grid>)
             })
             : (
-              <Typography variant="h3" sx={{ padding: 10 }}>
+              user && <Typography variant="h3" sx={{ padding: 10 }}>
                 Your cart is empty
               </Typography>
             )}
+          {!user && guestCart.length  ? (guestCart.map((item) => (
+            <Grid item key={item.id} >
+              <GuestCartItem
+                key={item.id}
+                id={item.id}
+                image={item.imageUrl}
+                name={item.name}
+                price={item.price}
+                quantity={item.quantity}
+              />
+            </Grid>
+          ))) : (
+           !user && <Typography variant="h3" sx={{ padding: 10 }}>
+              Your cart is empty
+            </Typography>
+          )}
         </Grid>
         <Typography sx={{ padding: 2, marginLeft: 5 }}>
           Click here to<Button onClick={() => { navigate('/') }}>continue shopping</Button>
         </Typography>
-        <CheckoutCartButton cartId={cart.id} />
+        <CheckoutCartButton cartId={loggedInCart?.id} />
       </Paper>
     </>
   );

@@ -3,7 +3,7 @@ const { requireUser } = require("../auth/middleware");
 const prisma = require("../db/client");
 
 // Get all users items in cart
-usersRouter.get("/me/cart", requireUser, async (req, res, next) => {
+usersRouter.get("/me/cart", async (req, res, next) => {
     try {
         const cart = await prisma.cart.findFirst({
             where: { user: { id: req.user.id } },

@@ -19,13 +19,13 @@ const catProducts =[
             "imageUrl":"https://tikipets.com/wp-content/uploads/2018/09/Tiki-Cat-Crunchy-Treats.png"
         },
        { 
-            "name":"Chicken  Dry Food",
+            "name":"Chicken Dry Food",
             "detail":"Your cat will love this dry food!",
             "price":10,
             "imageUrl":"https://www.boneapatreat.com/cdn/shop/products/Bixbi-Rawbble-Freeze-Dried-Dog-Food_3759b97b-5174-4615-bc79-7823371e9448_1080x.jpg?v=1645562069"
         },
        { 
-            "name":"Chicken  Wet Food",
+            "name":"Chicken Wet Food",
             "detail":"Your cat will love this wet food!",
             "price":10,
             "imageUrl":"https://m.media-amazon.com/images/S/aplus-media/vc/9e6265b5-1180-4f76-a173-66dbee9e9485.__CR0,0,300,300_PT0_SX300_V1___.png"
@@ -43,7 +43,7 @@ const catProducts =[
             "imageUrl":"https://www.boneapatreat.com/cdn/shop/products/Bixbi-Rawbble-Freeze-Dried-Dog-Food_3759b97b-5174-4615-bc79-7823371e9448_1080x.jpg?v=1645562069"
         },
         {
-            "name":"Duck  Wet Food",
+            "name":"Duck Wet Food",
             "detail":"Your cat will love this wet food!",
             "price":10,
             "imageUrl":"https://m.media-amazon.com/images/S/aplus-media/vc/9e6265b5-1180-4f76-a173-66dbee9e9485.__CR0,0,300,300_PT0_SX300_V1___.png"
@@ -55,13 +55,13 @@ const catProducts =[
             "imageUrl":"https://tikipets.com/wp-content/uploads/2018/09/Tiki-Cat-Crunchy-Treats.png"
         },
         {
-            "name":"Salmon  Dry Food",
+            "name":"Salmon Dry Food",
             "detail":"Your cat will love this dry food!",
             "price":10,
             "imageUrl":"https://www.boneapatreat.com/cdn/shop/products/Bixbi-Rawbble-Freeze-Dried-Dog-Food_3759b97b-5174-4615-bc79-7823371e9448_1080x.jpg?v=1645562069"
         },
         {
-            "name":"Salmon  Wet Food",
+            "name":"Salmon Wet Food",
             "detail":"Your cat will love this wet food!",
             "price":10,
             "imageUrl":"https://m.media-amazon.com/images/S/aplus-media/vc/9e6265b5-1180-4f76-a173-66dbee9e9485.__CR0,0,300,300_PT0_SX300_V1___.png"
@@ -73,13 +73,13 @@ const catProducts =[
             "imageUrl":"https://tikipets.com/wp-content/uploads/2018/09/Tiki-Cat-Crunchy-Treats.png"
         },
        { 
-            "name":"Rabbit  Dry Food",
+            "name":"Rabbit Dry Food",
             "detail":"Your cat will love this dry food!",
             "price":10,
             "imageUrl":"https://www.boneapatreat.com/cdn/shop/products/Bixbi-Rawbble-Freeze-Dried-Dog-Food_3759b97b-5174-4615-bc79-7823371e9448_1080x.jpg?v=1645562069"
         },
         {
-            "name":"Rabbit  Wet Food",
+            "name":"Rabbit Wet Food",
             "detail":"Your cat will love this wet food!",
             "price":10,
             "imageUrl":"https://m.media-amazon.com/images/S/aplus-media/vc/9e6265b5-1180-4f76-a173-66dbee9e9485.__CR0,0,300,300_PT0_SX300_V1___.png"
@@ -91,13 +91,13 @@ const catProducts =[
             "imageUrl":"https://tikipets.com/wp-content/uploads/2018/09/Tiki-Cat-Crunchy-Treats.png"
         },
       {  
-            "name":"Turkey  Dry Food",
+            "name":"Turkey Dry Food",
             "detail":"Your cat will love this dry food!",
             "price":10,
             "imageUrl":"https://www.boneapatreat.com/cdn/shop/products/Bixbi-Rawbble-Freeze-Dried-Dog-Food_3759b97b-5174-4615-bc79-7823371e9448_1080x.jpg?v=1645562069"
         },
         {
-            "name":"Turkey  Wet Food",
+            "name":"Turkey Wet Food",
             "detail":"Your cat will love this wet food!",
             "price":10,
             "imageUrl":"https://m.media-amazon.com/images/S/aplus-media/vc/9e6265b5-1180-4f76-a173-66dbee9e9485.__CR0,0,300,300_PT0_SX300_V1___.png"
@@ -127,19 +127,19 @@ const catProducts =[
             "imageUrl":"https://tikipets.com/wp-content/uploads/2018/09/Tiki-Cat-Crunchy-Treats.png"
         },
        { 
-            "name":" Deluxe Beef Dry Food",
+            "name":"Deluxe Beef Dry Food",
             "detail":"Your cat will love this dry food!",
             "price":20,
             "imageUrl":"https://www.boneapatreat.com/cdn/shop/products/Bixbi-Rawbble-Freeze-Dried-Dog-Food_3759b97b-5174-4615-bc79-7823371e9448_1080x.jpg?v=1645562069"
         },
         {
-            "name":" Deluxe  Beef Wet Food",
+            "name":"Deluxe Beef Wet Food",
             "detail":"Your cat will love this wet food!",
             "price":20,
             "imageUrl":"https://m.media-amazon.com/images/S/aplus-media/vc/9e6265b5-1180-4f76-a173-66dbee9e9485.__CR0,0,300,300_PT0_SX300_V1___.png"
         },
         {
-            "name":" Deluxe  Beef Treat",
+            "name":"Deluxe Beef Treat",
             "detail":"Beef treats are extra tastey!",
             "price":10,
             "imageUrl":"https://tikipets.com/wp-content/uploads/2018/09/Tiki-Cat-Crunchy-Treats.png"
@@ -271,13 +271,13 @@ const catProducts =[
             "imageUrl":"https://tikipets.com/wp-content/uploads/2018/09/Tiki-Cat-Crunchy-Treats.png"
         },
        { 
-            "name":"Super Deluxe Chicken  Dry Food",
+            "name":"Super Deluxe Chicken Dry Food",
             "detail":"Your cat will love this dry food!",
             "price":30,
             "imageUrl":"https://www.boneapatreat.com/cdn/shop/products/Bixbi-Rawbble-Freeze-Dried-Dog-Food_3759b97b-5174-4615-bc79-7823371e9448_1080x.jpg?v=1645562069"
         },
        { 
-            "name":"Super Deluxe Chicken  Wet Food",
+            "name":"Super Deluxe Chicken Wet Food",
             "detail":"Your cat will love this wet food!",
             "price":30,
             "imageUrl":"https://m.media-amazon.com/images/S/aplus-media/vc/9e6265b5-1180-4f76-a173-66dbee9e9485.__CR0,0,300,300_PT0_SX300_V1___.png"
@@ -295,7 +295,7 @@ const catProducts =[
             "imageUrl":"https://www.boneapatreat.com/cdn/shop/products/Bixbi-Rawbble-Freeze-Dried-Dog-Food_3759b97b-5174-4615-bc79-7823371e9448_1080x.jpg?v=1645562069"
         },
         {
-            "name":"Super Deluxe Duck  Wet Food",
+            "name":"Super Deluxe Duck Wet Food",
             "detail":"Your cat will love this wet food!",
             "price":30,
             "imageUrl":"https://m.media-amazon.com/images/S/aplus-media/vc/9e6265b5-1180-4f76-a173-66dbee9e9485.__CR0,0,300,300_PT0_SX300_V1___.png"
@@ -307,13 +307,13 @@ const catProducts =[
             "imageUrl":"https://tikipets.com/wp-content/uploads/2018/09/Tiki-Cat-Crunchy-Treats.png"
         },
         {
-            "name":"Super Deluxe Salmon  Dry Food",
+            "name":"Super Deluxe Salmon Dry Food",
             "detail":"Your cat will love this dry food!",
             "price":30,
             "imageUrl":"https://www.boneapatreat.com/cdn/shop/products/Bixbi-Rawbble-Freeze-Dried-Dog-Food_3759b97b-5174-4615-bc79-7823371e9448_1080x.jpg?v=1645562069"
         },
         {
-            "name":"Super Deluxe Salmon  Wet Food",
+            "name":"Super Deluxe Salmon Wet Food",
             "detail":"Your cat will love this wet food!",
             "price":30,
             "imageUrl":"https://m.media-amazon.com/images/S/aplus-media/vc/9e6265b5-1180-4f76-a173-66dbee9e9485.__CR0,0,300,300_PT0_SX300_V1___.png"
@@ -325,13 +325,13 @@ const catProducts =[
             "imageUrl":"https://tikipets.com/wp-content/uploads/2018/09/Tiki-Cat-Crunchy-Treats.png"
         },
        { 
-            "name":"Super Deluxe Rabbit  Dry Food",
+            "name":"Super Deluxe Rabbit Dry Food",
             "detail":"Your cat will love this dry food!",
             "price":30,
             "imageUrl":"https://www.boneapatreat.com/cdn/shop/products/Bixbi-Rawbble-Freeze-Dried-Dog-Food_3759b97b-5174-4615-bc79-7823371e9448_1080x.jpg?v=1645562069"
         },
         {
-            "name":"Super Deluxe Rabbit  Wet Food",
+            "name":"Super Deluxe Rabbit Wet Food",
             "detail":"Your cat will love this wet food!",
             "price":30,
             "imageUrl":"https://m.media-amazon.com/images/S/aplus-media/vc/9e6265b5-1180-4f76-a173-66dbee9e9485.__CR0,0,300,300_PT0_SX300_V1___.png"
@@ -343,13 +343,13 @@ const catProducts =[
             "imageUrl":"https://tikipets.com/wp-content/uploads/2018/09/Tiki-Cat-Crunchy-Treats.png"
         },
       {  
-            "name":"Super Deluxe Turkey  Dry Food",
+            "name":"Super Deluxe Turkey Dry Food",
             "detail":"Your cat will love this dry food!",
             "price":30,
             "imageUrl":"https://www.boneapatreat.com/cdn/shop/products/Bixbi-Rawbble-Freeze-Dried-Dog-Food_3759b97b-5174-4615-bc79-7823371e9448_1080x.jpg?v=1645562069"
         },
         {
-            "name":"Super Deluxe Turkey  Wet Food",
+            "name":"Super Deluxe Turkey Wet Food",
             "detail":"Your cat will love this wet food!",
             "price":30,
             "imageUrl":"https://m.media-amazon.com/images/S/aplus-media/vc/9e6265b5-1180-4f76-a173-66dbee9e9485.__CR0,0,300,300_PT0_SX300_V1___.png"

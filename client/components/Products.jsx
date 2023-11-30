@@ -3,9 +3,14 @@ import { useGetCatProductsQuery, useDeleteCatProductMutation, useCreateCartItems
 import React, { useState } from "react";
 import { Button, Box, Card, CardActions, CardContent, CardMedia, Typography, Grid, TextField, Slider } from "@mui/material";
 import NewProductForm from "./NewProductForm";
-import { useSelector } from "react-redux";
+
+
 import PriceFilter from "./PriceFilter";
 
+import { useSelector, useDispatch } from "react-redux";
+
+
+import { addToCart } from "../redux/cartSlice";
 
 const Products = () => {
   const { user, token } = useSelector(state => state.auth)
@@ -14,6 +19,8 @@ const Products = () => {
   const { data: products, isLoading, error } = useGetCatProductsQuery();
   const [deleteCatProduct] = useDeleteCatProductMutation();
   const [createCartItemsInCart] = useCreateCartItemsInCartMutation();
+
+  const dispatch = useDispatch()
 
   const [searchQuery, setSearchQuery] = useState("")
 
@@ -50,8 +57,8 @@ const [filteredPriceRange, setFilteredPriceRange] = useState([0, 100]); // Initi
       <Typography variant="h3" sx={{ marginLeft: 14 }} >Cat Products</Typography>
       {error && !products && (<p> Failed to load products from api</p>)}
       <Grid container spacing={4} sx={{ marginLeft: 10 }}>
-        {products ? (
-          products.slice().sort((a,b)=> {a.name > b.name ? 1 : -1 })
+        {products ? ( // localCompare not working here ... .sort((a,b)=> a.name.localeCompare(b.name)) (a,b)=> a.name > b.name ? 1 : -1 )
+          products.slice().sort((a,b)=> a.name.localeCompare(b.name))
           .filter(product => {
             if (searchQuery === '') {
               return product
@@ -78,6 +85,7 @@ const [filteredPriceRange, setFilteredPriceRange] = useState([0, 100]); // Initi
                       <Button variant="contained" onClick={() => navigate("/" + product.id)}>Product Info</Button>
                       {user?.admin && <Button variant="contained" onClick={() => deleteCatProduct(product.id)}>Delete Product</Button>}
                       {user?.admin && <Button variant="contained" onClick={() => navigate("/admin", { state: product })}>Update Product</Button>}
+                      {!user && <Button variant="contained" onClick={() => dispatch(addToCart({...product}))}>Add to Cart</Button>}
                       {token && <Button variant="contained" onClick={() => createCartItemsInCart({ quantity: 1, productId: product.id })}>Add to Cart</Button>}
                     </CardActions>
                   </Card>

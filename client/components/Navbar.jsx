@@ -17,10 +17,10 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Tooltip } from '@mui/material';
+
 
 const NavBar = () => {
-  const{ token,user} = useSelector(state => state.auth);
+  const { token, user } = useSelector(state => state.auth);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -54,18 +54,18 @@ const NavBar = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, padding: 1, fontSize:40, justifyContent:"center", verticalAlign: "center"}}>
-           <img id="cat-logo" src={catIcon}/> Whisker World
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, padding: 1, fontSize: 40, justifyContent: "center", verticalAlign: "center" }}>
+            <img id="cat-logo" src={catIcon} /> Whisker World
           </Typography>
           {token ?
-            (<Button 
+            (<Button
               color="inherit"
               onClick={() => {
-              dispatch(logout())
-              navigate('/')
-            }}
+                dispatch(logout())
+                navigate('/')
+              }}
             >Logout</Button>) :
-          (<Button color="inherit" component={RouterLink} to="/register">Login or Register</Button>)}
+            (<Button color="inherit" component={RouterLink} to="/register">Login or Register</Button>)}
           <Menu
             id="demo-positioned-menu"
             aria-labelledby="demo-positioned-button"
@@ -82,13 +82,8 @@ const NavBar = () => {
             }}
           >
             <MenuItem onClick={handleClose} component={RouterLink} to="/">Products</MenuItem>
-            <Tooltip title = {!token ? "Sign in to view the cart": '' }>
-              <span>
-              <MenuItem disabled={!token} onClick={handleClose} component={RouterLink} to="/cart"><ShoppingCartIcon/>Cart</MenuItem>
-              </span>
-            </Tooltip>
+            <MenuItem onClick={handleClose} component={RouterLink} to="/cart"><ShoppingCartIcon />Cart</MenuItem>
             {user?.admin && <MenuItem onClick={handleClose} component={RouterLink} to="/admin">Admin</MenuItem>}
-
           </Menu>
         </Toolbar>
       </AppBar>
