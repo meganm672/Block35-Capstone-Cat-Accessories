@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useGetCatProductsQuery, useDeleteCatProductMutation, useCreateCartItemsInCartMutation } from "../redux/api";
 import React, { useState } from "react";
-import { Button, Box, Card, CardActions, CardContent, CardMedia, Typography, Grid, TextField } from "@mui/material";
+import { Button, Box, Card, CardActions, CardContent, CardMedia, Typography, Grid, TextField, Slider } from "@mui/material";
 import NewProductForm from "./NewProductForm";
 import { useSelector } from "react-redux";
+import PriceFilter from "./PriceFilter";
 
 
 const Products = () => {
@@ -15,6 +16,14 @@ const Products = () => {
   const [createCartItemsInCart] = useCreateCartItemsInCartMutation();
 
   const [searchQuery, setSearchQuery] = useState("")
+
+const [filteredPriceRange, setFilteredPriceRange] = useState([0, 100]); // Initial state, adjust as needed
+
+  const handleFilterChange = (priceRange) => {
+    // Logic to apply filter based on the selected price range
+    setFilteredPriceRange(priceRange);
+    // Additional logic like fetching filtered data, updating state, etc.
+  };
 
   if (isLoading) {
     return <Typography>Loading...</Typography>;
@@ -34,6 +43,9 @@ const Products = () => {
         onChange={event => setSearchQuery(event.target.value)}
         sx={{ marginLeft: 10, marginTop: 3, padding:2}}
       />
+      <PriceFilter onFilterChange={handleFilterChange} />
+
+
       {user?.admin && <NewProductForm />}
       <Typography variant="h3" sx={{ marginLeft: 14 }} >Cat Products</Typography>
       {error && !products && (<p> Failed to load products from api</p>)}
