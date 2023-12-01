@@ -29,7 +29,7 @@ const persistedCartReducer = persistReducer(persistConfig, cartReducer)
     reducer: {
         [api.reducerPath]: api.reducer,
         auth: authReducer,
-        filter: filterReducer
+        filter: filterReducer,
         cart: persistedCartReducer
     },
     middleware: (getDefaultMiddleware) => {
