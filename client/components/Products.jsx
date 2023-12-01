@@ -10,10 +10,12 @@ import { addToCart } from "../redux/cartSlice";
 
 const Products = () => {
   const { user, token } = useSelector(state => state.auth)
-  const { price, category} =useSelector(state => state.filter);
+  const { price, category} =useSelector(state => state.filter); //can i remove this?
   const navigate = useNavigate();
 
   const { data: products, isLoading, error } = useGetCatProductsQuery(); // add price?
+  //add console.log to see the data
+  //no slice needed
   const [deleteCatProduct] = useDeleteCatProductMutation();
   const [createCartItemsInCart] = useCreateCartItemsInCartMutation();
 

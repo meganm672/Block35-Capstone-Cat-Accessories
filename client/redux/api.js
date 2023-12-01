@@ -28,10 +28,11 @@ const api = createApi({
         //cat product-
         //get all the cat products api/products/
         getCatProducts: builder.query({
-            query: (price) => {
-                const url = price ? `api/products?price=${price}` : "api/products";
-                return url;
-            },
+            query: () => "api/products",
+            // query: (price) => {
+            //     const url = price ? `api/products?price=${price}` : "api/products";
+            //     return url;
+            // },
 
             providesTags: ["Product"]
         }),

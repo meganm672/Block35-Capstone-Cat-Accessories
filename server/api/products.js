@@ -7,22 +7,24 @@ const prisma = require("../db/client");
 // if no queries are pass, return all
 productsRouter.get("/", async (req, res, next) => {
  try {
-        const { price } = req.query;
+    const products = await prisma.product.findMany();
+        res.send(products);
+        // const { price } = req.query;
 
-        if (price !== undefined) {
-            const filteredProducts = await prisma.product.findMany({
-                where: {
-                    price: {
-                        lt: parseInt(price),
-                    },
-                },
-            });
+        // if (price !== undefined) {
+        //     const filteredProducts = await prisma.product.findMany({
+        //         where: {
+        //             price: {
+        //                 lt: parseInt(price),
+        //             },
+        //         },
+        //     });
 
-            res.send(filteredProducts);
-        } else {
-            const allProducts = await prisma.product.findMany();
-            res.send(allProducts);
-        }
+        //     res.send(filteredProducts);
+        // } else {
+        //     const allProducts = await prisma.product.findMany();
+        //     res.send(allProducts);
+        // }
     } catch (error) {
         next(error);
     }
