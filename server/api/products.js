@@ -5,6 +5,7 @@ const prisma = require("../db/client");
 
 // Get all products
 // vivian todo: if no queries are pass, return all
+// if no queries are pass, return all
 productsRouter.get("/", async (req, res, next) => {
     try {
         const products = await prisma.product.findMany();

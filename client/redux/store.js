@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import api from './api'
 import authReducer from './authSlice'
 import { cartReducer } from './cartSlice';
+import { filterReducer } from './filterSlice';
 
 import storage from 'redux-persist/lib/storage';
 
@@ -28,6 +29,7 @@ const persistedCartReducer = persistReducer(persistConfig, cartReducer)
     reducer: {
         [api.reducerPath]: api.reducer,
         auth: authReducer,
+        filter: filterReducer
         cart: persistedCartReducer
     },
     middleware: (getDefaultMiddleware) => {
@@ -38,6 +40,7 @@ const persistedCartReducer = persistReducer(persistConfig, cartReducer)
         }).concat(api.middleware)
     }
 })
+
 
 export default store 
 export const persistor = persistStore(store)

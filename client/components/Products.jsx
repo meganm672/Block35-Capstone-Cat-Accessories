@@ -1,14 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import { useGetCatProductsQuery, useDeleteCatProductMutation, useCreateCartItemsInCartMutation } from "../redux/api";
 import React, { useState } from "react";
-import { Button, Box, Card, CardActions, CardContent, CardMedia, Typography, Grid, TextField } from "@mui/material";
+import { Button, Box, Card, CardActions, CardContent, CardMedia, Typography, Grid, TextField} from "@mui/material";
 import NewProductForm from "./NewProductForm";
 import { useSelector, useDispatch } from "react-redux";
-
+import Filters from "./Filters";
 import { addToCart } from "../redux/cartSlice";
+
 
 const Products = () => {
   const { user, token } = useSelector(state => state.auth)
+  const { price, category} =useSelector(state => state.filter);
   const navigate = useNavigate();
 
   const { data: products, isLoading, error } = useGetCatProductsQuery();
@@ -18,6 +20,9 @@ const Products = () => {
   const dispatch = useDispatch()
 
   const [searchQuery, setSearchQuery] = useState("")
+
+
+
 
   if (isLoading) {
     return <Typography>Loading...</Typography>;
@@ -37,6 +42,7 @@ const Products = () => {
         onChange={event => setSearchQuery(event.target.value)}
         sx={{ marginLeft: 10, marginTop: 3, padding:2}}
       />
+      <Filters />
       {user?.admin && <NewProductForm />}
       <Typography variant="h3" sx={{ marginLeft: 14 }} >Cat Products</Typography>
       {error && !products && (<p> Failed to load products from api</p>)}
@@ -49,6 +55,9 @@ const Products = () => {
             } else if (product.name.toLowerCase().includes(searchQuery.toLowerCase())) {
               return product;
             }
+          })
+          .filter(product => {
+            return !price || (price && product.price <= price)
           })
             .map((product) => {
               return (

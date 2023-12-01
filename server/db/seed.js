@@ -21,7 +21,8 @@ async function seed() {
             name: catProd.name,
             detail: catProd.detail,
             price: catProd.price,
-            imageUrl: catProd.imageUrl
+            imageUrl: catProd.imageUrl,
+            category: catProd.category
           }
         })
       ));
