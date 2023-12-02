@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useGetCatProductsQuery, useDeleteCatProductMutation, useCreateCartItemsInCartMutation } from "../redux/api";
+import { useGetCatProductsQuery, useDeleteCatProductMutation, useCreateCartItemsInCartMutation, usePaginateProductsQuery } from "../redux/api";
 import React, { useState } from "react";
 import { Button, Box, Card, CardActions, CardContent, CardMedia, Typography, Grid, TextField} from "@mui/material";
 import NewProductForm from "./NewProductForm";
@@ -12,7 +12,8 @@ const Products = () => {
   const { user, token } = useSelector(state => state.auth)
   const { price, category} =useSelector(state => state.filter);
   const navigate = useNavigate();
-
+  const [page, setPage] = useState(1);
+  const { data: productsLists, isFetching } = usePaginateProductsQuery(page)
   const { data: products, isLoading, error } = useGetCatProductsQuery(price ?? undefined); // if price is truthy pass it, otherwise pass undefined
   const [deleteCatProduct] = useDeleteCatProductMutation();
   const [createCartItemsInCart] = useCreateCartItemsInCartMutation();
@@ -20,6 +21,7 @@ const Products = () => {
   const dispatch = useDispatch()
 
   const [searchQuery, setSearchQuery] = useState("")
+  
 
 
 
@@ -83,11 +85,14 @@ const Products = () => {
                       {!user && <Button variant="contained" onClick={() => dispatch(addToCart({...product}))}>Add to Cart</Button>}
                       {token && <Button variant="contained" onClick={() => createCartItemsInCart({ quantity: 1, productId: product.id })}>Add to Cart</Button>}
                     </CardActions>
+
                   </Card>
                 </Grid>
               )
             })) : !error && <p>Loading...</p>}
       </Grid>
+                          <Button onClick={() => setPage(page - 1)} isLoading={isFetching}>Previous</Button>
+                    <Button onClick={() => setPage(page + 1)} isLoading={isFetching}>Next</Button>
     </Box>
   )
 }

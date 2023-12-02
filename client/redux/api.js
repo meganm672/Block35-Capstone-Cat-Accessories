@@ -153,6 +153,11 @@ const api = createApi({
         getAllUsers: builder.query({
             query: () => "auth/",
         }),
+
+        // pagination
+        paginateProducts: builder.query({
+            query: (page = 1) => `api/products?page=${page}`,
+        }),
     })
 })
 
@@ -174,4 +179,5 @@ export const {
     useLoginMutation,
     useCurrentUserQuery,
     useGetAllUsersQuery,
+    usePaginateProductsQuery,
 } = api;
