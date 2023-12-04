@@ -13,7 +13,7 @@ const Products = () => {
   const { price, category} =useSelector(state => state.filter);
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
-  const { data: productsLists, isFetching } = usePaginateProductsQuery(page)
+  const { data: paginatedProducts, isFetching } = usePaginateProductsQuery(page)
   const { data: products, isLoading, error } = useGetCatProductsQuery(price ?? undefined); // if price is truthy pass it, otherwise pass undefined
   const [deleteCatProduct] = useDeleteCatProductMutation();
   const [createCartItemsInCart] = useCreateCartItemsInCartMutation();
@@ -91,8 +91,8 @@ const Products = () => {
               )
             })) : !error && <p>Loading...</p>}
       </Grid>
-                          <Button onClick={() => setPage(page - 1)} isLoading={isFetching}>Previous</Button>
-                    <Button onClick={() => setPage(page + 1)} isLoading={isFetching}>Next</Button>
+              <button onClick={() => setPage(page - 1)} isLoading={isFetching}>Previous</button>
+              <button onClick={() => setPage(page + 1)} isLoading={isFetching}>Next</button>
     </Box>
   )
 }
