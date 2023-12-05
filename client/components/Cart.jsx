@@ -14,7 +14,7 @@ const Cart = () => {
   const { user } = useSelector(state => state.auth);
   const guestCart = useSelector(state => state.cart.items)
   const { data: loggedInCart, isLoading, error } = useGetUsersCartQuery();
-  
+ 
 
 
 
@@ -47,7 +47,10 @@ const Cart = () => {
           Click here to <Link href="#" component={RouterLink} to="/">continue shopping</Link>
         </Typography>
         
-    {user && guestCart.length > 0 && <CheckoutCartButton cartId={loggedInCart?.id} />}
+    {(user && loggedInCart && loggedInCart?.cartItems?.[0]?.product === undefined ) ? (<Button disabled variant="contained" sx={{ margin: 2, padding: 2, marginLeft: 5, opacity: 0.5 }}>
+    Checkout
+  </Button>) : (<CheckoutCartButton cartId={loggedInCart?.id} />
+    )}
     {(!user && guestCart.length > 0) ? (
   <GuestCheckoutCartButton />
 ) : (
