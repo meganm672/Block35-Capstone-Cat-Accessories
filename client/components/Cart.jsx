@@ -14,7 +14,7 @@ const Cart = () => {
   const { user } = useSelector(state => state.auth);
   const guestCart = useSelector(state => state.cart.items)
   const { data: loggedInCart, isLoading, error } = useGetUsersCartQuery();
-  console.log(loggedInCart, "loggedIncart");
+  
 
 
 
@@ -46,16 +46,16 @@ const Cart = () => {
         <Typography variant="h6" sx={{ padding: 2, marginLeft: 3.5 }}>
           Click here to <Link href="#" component={RouterLink} to="/">continue shopping</Link>
         </Typography>
-        {(loggedInCart && Object.keys(loggedInCart).length === 0) ? (
-        <Button disabled variant="contained" sx={{ margin: 2, padding: 2, marginLeft: 5, opacity: 0.5 }}>
+        
+    {user && guestCart.length > 0 && <CheckoutCartButton cartId={loggedInCart?.id} />}
+    {(!user && guestCart.length > 0) ? (
+  <GuestCheckoutCartButton />
+) : (
+  <Button disabled variant="contained" sx={{ margin: 2, padding: 2, marginLeft: 5, opacity: 0.5 }}>
     Checkout
-    </Button>
-    ) : (
-      <> 
-    {user && loggedInCart && Object.keys(loggedInCart).length > 0 && <CheckoutCartButton cartId={loggedInCart?.id} />}
-    {!user && loggedInCart && Object.keys(loggedInCart).length > 0 && <GuestCheckoutCartButton />}
-    </>
-    )}
+  </Button>
+)}
+    
       </Paper>
     </>
   );
