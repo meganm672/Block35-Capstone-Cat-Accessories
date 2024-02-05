@@ -54,6 +54,7 @@ Whisker World is an e-commerce site that was designed as a one stop shop for cat
 * Prisma
 * PostgresSQL
 * Jest
+* typescript
 
 ## Installation
 
